@@ -1,131 +1,57 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Medium Length Professional CV - RESUME CLASS FILE
-%
-% This template has been downloaded from:
-% http://www.LaTeXTemplates.com
-%
-% This class file defines the structure and design of the template. 
-%
-% Original header:
-% Copyright (C) 2010 by Trey Hunner
-%
-% Copying and distribution of this file, with or without modification,
-% are permitted in any medium without royalty provided the copyright
-% notice and this notice are preserved. This file is offered as-is,
-% without any warranty.
-%
-% Created by Trey Hunner and modified by www.LaTeXTemplates.com
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{resume} % Use the custom resume.cls style
 
-\ProvidesClass{resume}[2010/07/10 v0.9 Resume class]
+\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry}
+\newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
+\newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
+\name{Leonardo B. Tosin}
+\address{Garibaldi, RS - Brazil}
+\address{leotosin.com.br  \\ leob.tosin@hotmail.com}
 
-\LoadClass[11pt,letterpaper]{article} % Font size and paper type
+\begin{document}
 
-\usepackage[parfill]{parskip} % Remove paragraph indentation
-\usepackage{array} % Required for boldface (\bf and \bfseries) tabular columns
-\usepackage{ifthen} % Required for ifthenelse statements
+\begin{rSection}{Education}
 
-\pagestyle{empty} % Suppress page numbers
+{\bf Universidade de Caxias do Sul(UCS), Bento Gon\c{c}alves} \hfill {\em January 2013 - 2021} 
+\\ Computer Science Bachelor
 
-%----------------------------------------------------------------------------------------
-%	HEADINGS COMMANDS: Commands for printing name and address
-%----------------------------------------------------------------------------------------
+\end{rSection}
 
-\def \name#1{\def\@name{#1}} % Defines the \name command to set name
-\def \@name {} % Sets \@name to empty by default
+\begin{rSection}{Resume}
+ Software Developer for 4 years now, with experience on desktop and back-end web development. Passionate about clean and standardized code. Interest and knowledge on REST APIs, webservices, distributed systems, concurrency, parallelism, design patterns, networks and software modeling.
+ 
+\end{rSection}
 
-\def \addressSep {$\diamond$} % Set default address separator to a diamond
+\begin{rSection}{Skills}
 
-% One, two or three address lines can be specified 
-\let \@addressone \relax
-\let \@addresstwo \relax
-\let \@addressthree \relax
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{6ex}} l }
+Programming \ &  .NET, Java, Rust and Elixir \\
+Databases \ & SQL Server, MySQL and PostgreSQL \\
+NoSQL \ & MongoDB, Redis and couchDB \\
+Operating System  \ & Ubuntu, Fedora and OS X \\
 
-% \address command can be used to set the first, second, and third address (last 2 optional)
-\def \address #1{
-  \@ifundefined{@addresstwo}{
-    \def \@addresstwo {#1}
-  }{
-  \@ifundefined{@addressthree}{
-  \def \@addressthree {#1}
-  }{
-     \def \@addressone {#1}
-  }}
-}
+\end{tabular}
 
-% \printaddress is used to style an address line (given as input)
-\def \printaddress #1{
-  \begingroup
-    \def \\ {\addressSep\ }
-    \centerline{#1}
-  \endgroup
-  \par
-  \addressskip
-}
+\end{rSection}
 
-% \printname is used to print the name as a page header
-\def \printname {
-  \begingroup
-    \hfil{\MakeUppercase{\namesize\bf \@name}}\hfil
-    \nameskip\break
-  \endgroup
-}
+\begin{rSection}{working experience}
 
-%----------------------------------------------------------------------------------------
-%	PRINT THE HEADING LINES
-%----------------------------------------------------------------------------------------
+\begin{rSubsection}{NuvolaHost Servi\c{c}os de TI}{April 2017 - September 2019}{Backend Software Developer}{}
+\item Maintainer of the management system sell by the company called pGestor, from the development of new features, improvements and corrections to the attendance, support and training of the system's user. Ocsionally worked with  responsive websites design and the mail marketing system called Envie certo.
+\end{rSubsection}
 
-\let\ori@document=\document
-\renewcommand{\document}{
-  \ori@document  % Begin document
-  \printname % Print the name specified with \name
-  \@ifundefined{@addressone}{}{ % Print the first address if specified
-    \printaddress{\@addressone}}
-  \@ifundefined{@addresstwo}{}{ % Print the second address if specified
-    \printaddress{\@addresstwo}}
-     \@ifundefined{@addressthree}{}{ % Print the third address if specified
-    \printaddress{\@addressthree}}
-}
+\begin{rSubsection}{Cooperativa Santa Clara}{September 2019 -  Currently}{Software Developer}{}
+\item Maintainer of the management system of the company on the Dynamics AX 2012, and build new stuff using it's embedded language, X++. Maintance of APIs build on .NET and NodeJS. And build reports using SSRS Reports Server.
+\end{rSubsection}
 
-%----------------------------------------------------------------------------------------
-%	SECTION FORMATTING
-%----------------------------------------------------------------------------------------
 
-% Defines the rSection environment for the large sections within the CV
-\newenvironment{rSection}[1]{ % 1 input argument - section name
-  \sectionskip
-  \MakeUppercase{\bf #1} % Section title
-  \sectionlineskip
-  \hrule % Horizontal line
-  \begin{list}{}{ % List for each individual item in the section
-    \setlength{\leftmargin}{1.5em} % Margin within the section
-  }
-  \item[]
-}{
-  \end{list}
-}
+\end{rSection}
 
-%----------------------------------------------------------------------------------------
-%	WORK EXPERIENCE FORMATTING
-%----------------------------------------------------------------------------------------
 
-\newenvironment{rSubsection}[4]{ % 4 input arguments - company name, year(s) employed, job title and location
- {\bf #1} \hfill {#2} % Bold company name and date on the right
- \ifthenelse{\equal{#3}{}}{}{ % If the third argument is not specified, don't print the job title and location line
-  \\
-  {\em #3} \hfill {\em #4} % Italic job title and location
-  }\smallskip
-  \begin{list}{$\cdot$}{\leftmargin=0em} % \cdot used for bullets, no indentation
-   \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
-  }{
-  \end{list}
-  \vspace{0.5em} % Some space after the list of bullet points
-}
 
-% The below commands define the whitespace after certain things in the document - they can be \smallskip, \medskip or \bigskip
-\def\namesize{\huge} % Size of the name at the top of the document
-\def\addressskip{\smallskip} % The space between the two address (or phone/email) lines
-\def\sectionlineskip{\medskip} % The space above the horizontal line for each section 
-\def\nameskip{\bigskip} % The space after your name at the top
-\def\sectionskip{\medskip} % The space after the heading section
+\begin{rSection}{Voluntary work} 
+\item President of the \textit{diret\'orio acad\^emico de Ci\^encia da Computa\c{c}\~ao} from the period 2017-2018.
+\item President of the \textit{Associa\c{c}\~ao Garibaldense de Estudantes no Campus Universit\'ario da Regi\~ao dos Vinhedos} from the period 2017-2019.
+\end{rSection}
+
+
+\end{document}
